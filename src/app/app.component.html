@@ -1,1 +1,24 @@
-<h1>Vehicle Overview App Works! :)</h1>
+<header *ngIf="isLoggedIn$ | async">
+  <div
+    class="flex items-center justify-between p-4 text-white"
+    style="
+      background-image: linear-gradient(
+        120deg,
+        #23a638,
+        #009770 40%,
+        #00878a 75%,
+        #00a5c8
+      );
+    "
+  >
+    Vehicle Overview App
+    <p-button
+      label="Sign Out"
+      (click)="logout()"
+      styleClass="p-button-outlined !text-white"
+    ></p-button>
+  </div>
+</header>
+<div class="flex justify-center min-h-screen pb-10 mx-auto max-w-screen-2xl">
+  <router-outlet></router-outlet>
+</div>
