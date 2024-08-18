@@ -1,5 +1,5 @@
-<div class="flex my-10">
-  <span class="p-input-icon-right">
+<div class="flex justify-center my-10">
+  <div class="p-input-icon-right">
     <i class="pi pi-search"></i>
     <input
       #query
@@ -8,55 +8,16 @@
       placeholder="Search..."
       required
       (input)="onSearchQueryChange(query.value)"
-  /></span>
+    />
+  </div>
 </div>
-
-<p-table
-  *ngIf="vehicles$ | async as vehicles; else loading"
-  [value]="vehicles"
-  class="max-w-screen-md"
-  styleClass="border border-[#dee2e6] rounded-md overflow-hidden shadow-lg"
-  [tableStyle]="{ 'min-width': '50rem', 'max-width': '1024px' }"
+<div
+  class="flex max-sm:overflow-x-auto max-sm:px-2 md:justify-center max-sm:w-screen"
 >
-  <ng-template pTemplate="header">
-    <tr>
-      <th>Name</th>
-      <th>Manufacturer</th>
-      <th>Model</th>
-      <th>Year</th>
-      <th>Type</th>
-      <th>Fuel Type</th>
-      <th>License Plate</th>
-      <th>Active</th>
-    </tr>
-  </ng-template>
-  <ng-template pTemplate="body" let-vehicle>
-    <tr>
-      <td>{{ vehicle.name | VehicleNamePipe }}</td>
-      <td>{{ vehicle.manufacturer }}</td>
-      <td>{{ vehicle.model }}</td>
-      <td>{{ vehicle.year }}</td>
-      <td>{{ vehicle.type }}</td>
-      <td>{{ vehicle.fuelType }}</td>
-      <td>{{ vehicle.licensePlate }}</td>
-      <td>
-        <i
-          class="mx-auto pi pi-car"
-          [ngClass]="{
-            'text-gray-300': !vehicle.active,
-            'text-green-400': vehicle.active
-          }"
-        ></i>
-      </td>
-    </tr>
-  </ng-template>
-</p-table>
-
-<ng-template #loading>
   <p-table
-    [value]="[{}, {}, {}, {}, {}, {}, {}, {}, {}]"
-    class="max-w-screen-md"
-    [tableStyle]="{ 'min-width': '50rem', 'max-width': '1024px' }"
+    *ngIf="vehicles$ | async as vehicles; else loading"
+    [value]="vehicles"
+    styleClass="border border-[#dee2e6] rounded-md overflow-hidden shadow-lg"
   >
     <ng-template pTemplate="header">
       <tr>
@@ -68,19 +29,61 @@
         <th>Fuel Type</th>
         <th>License Plate</th>
         <th>Active</th>
-      </tr>
-    </ng-template>
-    <ng-template pTemplate="body">
+      </tr></ng-template
+    >
+
+    <ng-template pTemplate="body" let-vehicle>
       <tr>
-        <td><p-skeleton></p-skeleton></td>
-        <td><p-skeleton></p-skeleton></td>
-        <td><p-skeleton></p-skeleton></td>
-        <td><p-skeleton></p-skeleton></td>
-        <td><p-skeleton></p-skeleton></td>
-        <td><p-skeleton></p-skeleton></td>
-        <td><p-skeleton></p-skeleton></td>
-        <td><p-skeleton></p-skeleton></td>
+        <td>{{ vehicle.name | VehicleNamePipe }}</td>
+        <td>{{ vehicle.manufacturer }}</td>
+        <td>{{ vehicle.model }}</td>
+        <td>{{ vehicle.year }}</td>
+        <td>{{ vehicle.type }}</td>
+        <td>{{ vehicle.fuelType }}</td>
+        <td>{{ vehicle.licensePlate }}</td>
+        <td>
+          <i
+            class="mx-auto pi pi-car"
+            [ngClass]="{
+              'text-gray-300': !vehicle.active,
+              'text-green-400': vehicle.active
+            }"
+          ></i>
+        </td>
       </tr>
     </ng-template>
   </p-table>
-</ng-template>
+
+  <ng-template #loading>
+    <p-table
+      [value]="[{}, {}, {}, {}, {}, {}, {}, {}, {}]"
+      class="max-w-screen-md"
+      [tableStyle]="{ 'min-width': '50rem', 'max-width': '1024px' }"
+    >
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Name</th>
+          <th>Manufacturer</th>
+          <th>Model</th>
+          <th>Year</th>
+          <th>Type</th>
+          <th>Fuel Type</th>
+          <th>License Plate</th>
+          <th>Active</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body">
+        <tr>
+          <td><p-skeleton></p-skeleton></td>
+          <td><p-skeleton></p-skeleton></td>
+          <td><p-skeleton></p-skeleton></td>
+          <td><p-skeleton></p-skeleton></td>
+          <td><p-skeleton></p-skeleton></td>
+          <td><p-skeleton></p-skeleton></td>
+          <td><p-skeleton></p-skeleton></td>
+          <td><p-skeleton></p-skeleton></td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </ng-template>
+</div>
