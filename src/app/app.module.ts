@@ -8,7 +8,7 @@ import { LoginPageComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { OverviewComponent } from './overview/overview.component';
 import { TableModule } from 'primeng/table';
-import { VehicleNamePipePipe } from './vehicle-name-pipe.pipe';
+import { VehicleNamePipePipe } from './shared/vehicle-name-pipe.pipe';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { SkeletonModule } from 'primeng/skeleton';
