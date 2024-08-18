@@ -39,8 +39,6 @@ export class LoginPageComponent {
           this.router.navigate(['overview']);
         }
       });
-    } else {
-      console.log('Form has errors!');
     }
   }
 }
